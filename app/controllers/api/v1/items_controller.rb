@@ -9,6 +9,11 @@ class Api::V1::ItemsController < ApplicationController
   end
 
 
+  def destroy
+    render json: Item.find(params[:id]).delete, status: 204
+  end
+
+
   private
 
   def item_params

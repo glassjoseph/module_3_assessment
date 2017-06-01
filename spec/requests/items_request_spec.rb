@@ -36,7 +36,6 @@ RSpec.describe "Items API" do
 
     post "/api/v1/items", {item: item_params}
 
-    binding.pry
     expect(response.status).to eq(201)
 
 
@@ -54,13 +53,25 @@ RSpec.describe "Items API" do
     expect(item.description).to eq("it's a good one")
     expect(item.image_url).to eq("this_url.com")
   end
+
+  it "can delete an item" do
+
+
+    # When I send a DELETE request to `/api/v1/items/1`
+    # I receive a 204 JSON response if the record is successfully deleted
+    #
+
+    item = Item.create(name: "Book", description: "it's a good one", image_url: "this_url.com")
+
+    delete "/api/v1/items/#{item.id}"
+
+    expect(response.status).to eq(204)
+  end
+
 end
 
 
 
-#
-# When I send a DELETE request to `/api/v1/items/1`
-# I receive a 204 JSON response if the record is successfully deleted
 #
 # When I send a POST request to `/api/v1/items` with a name, description, and image_url
 # I receive a 201 JSON  response if the record is successfully created
