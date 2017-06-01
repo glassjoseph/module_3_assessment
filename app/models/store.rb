@@ -7,10 +7,14 @@ class Store < ActiveRecord::Base
     @phone = attrs[:phone]
     @type = attrs[:storeType]
   end
-  #
-  # def search_by_zip()
-  #
-  # end
+
+  def self.search_by_zip(zip)
+    raw_stores = BestBuyService.search_by_zip(zip)
+
+    @stores = raw_stores.map do |raw_store|
+      Store.new(raw_store)
+    end
+  end
 
 
 

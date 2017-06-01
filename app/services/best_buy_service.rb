@@ -1,0 +1,14 @@
+class BestBuyService
+
+
+
+  def self.search_by_zip(zip)
+    raw_response = Faraday.get("https://api.bestbuy.com/v1/stores?format=json&show=city,longName,storeType,phone&apiKey=zvkqfuc5vws6ytvedk2qwf4n&postalCode=80202&distance=25")
+
+    response = JSON.parse(raw_response.body, symbolize_names: true)
+
+    response[:stores]
+  end
+
+
+end
