@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   end
 
   post "/search", to: "search#index"
+
 end
