@@ -1,4 +1,5 @@
-class Store < ActiveRecord::Base
+class Store
+  attr_accessor :name, :city, :distance, :phone, :type
 
   def initialize(attrs = {})
     @name = attrs[:longName]
@@ -11,7 +12,7 @@ class Store < ActiveRecord::Base
   def self.search_by_zip(zip)
     raw_stores = BestBuyService.search_by_zip(zip)
 
-    @stores = raw_stores.map do |raw_store|
+    raw_stores.map do |raw_store|
       Store.new(raw_store)
     end
   end

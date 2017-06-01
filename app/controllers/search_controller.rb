@@ -15,9 +15,8 @@ class SearchController < ApplicationController
     # @stores = response[:stores].map do |raw_store|
     #   Store.new(raw_store)
     # end
-
     @stores = Store.search_by_zip(params[:zip])
-    
+
   end
 
 
