@@ -9,8 +9,9 @@ require 'rails_helper'
 
 
 RSpec.describe "Items API" do
-  it "can send all items" do
+  it "can show a single item" do
 
+    item = create(:item)
     # When I send a GET request to `/api/v1/items/1`
 
     get "/api/v1/items/1"
