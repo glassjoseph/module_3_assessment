@@ -4,8 +4,6 @@ RSpec.describe "User can search stores" do
     scenario "user sees nearby stores" do
       visit '/'
 
-      # And I fill in a search box with "80202" and click "search"
-      # Then my current path should be "/search" (ignoring params)
       fill_in "store_zip", with: 80202
       click_on "search"
 
