@@ -1,7 +1,7 @@
 class Api::V1::ItemsController < ApplicationController
 
   def show
-    render json: @item = Item.find(params[:id].to_i)
+    render json: @item = Item.find(params[:id])
   end
 
   def create
@@ -12,7 +12,6 @@ class Api::V1::ItemsController < ApplicationController
   def destroy
     render json: Item.find(params[:id]).delete, status: 204
   end
-
 
   private
 
