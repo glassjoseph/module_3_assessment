@@ -29,22 +29,25 @@ RSpec.describe "Items API" do
     expect(item).to_not have_key("created_at")
     expect(item).to_not have_key("updated_at")
   end
+
+  it "can create an item" do
+
+  item_params = {name: "Book", description: "it's a good one", image_url: "this_url.com"}
+
+    post "/api/v1/items", params: {item: item_params}
+
+    expect(response).to eq(204)
+
+    binding.pry
+    item = JSON.parse(response.body)
+
+    item = Item.last
+    expect(item.name).to eq("Book")
+    expect(item.description).to eq("it's a good one")
+    expect(item.image_url).to eq("this_url")
+  end
 end
 
-
-it "can create an item" do
-
-item_params = {name: "Book", description: "it's a good one", image_url: "this_url.com"}
-
-  post "/api/v1/items", params: {item: item_params}
-
-  expect(response).to be_success
-
-
-  expect(item.name).to eq("Book")
-  expect(item.description).to eq("it's a good one")
-  expect(item.image_url).to eq("this_url")
-end
 
 
 #

@@ -1,10 +1,18 @@
 class Api::V1::ItemsController < ApplicationController
-  def index
-    render json: Item.all
-  end
 
   def show
     render json: @item = Item.find(params[:id].to_i)
   end
-  
+
+  def create
+    render json: Item.create(item_params), status: 201
+  end
+
+
+  private
+
+    def item_params
+      binding.pry
+      params.require(:item).permit(:name, :description, :image_url)
+    end
 end
