@@ -24,8 +24,7 @@ RSpec.describe "User can search stores" do
       expect(page).to have_content("Store Type")
       expect(page).to have_content("16 Total Stores")
 
-      # https://api.bestbuy.com/v1/stores?format=json&show=city,longName,storeType,phone&apiKey=zvkqfuc5vws6ytvedk2qwf4n&&postalCode=80202&distance=25
+      # https://api.bestbuy.com/v1/stores?format=json&show=city,longName,storeType,phone&apiKey=ENV['BEST_BUY_KEY']&postalCode=80202&distance=25
 
-      #https://api.bestbuy.com/v1/stores?format=json&apiKey=zvkqfuc5vws6ytvedk2qwf4n&&postalCode=80203&&distance=25
     end
   end
