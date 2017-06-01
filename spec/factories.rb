@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :store do
+    name "MyString"
+    city "MyString"
+    distance "MyString"
+    phone "MyString"
+    type ""
+  end
 
   factory :item do
     name "Item name"

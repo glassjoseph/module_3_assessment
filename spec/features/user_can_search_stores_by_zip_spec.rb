@@ -6,7 +6,7 @@ RSpec.describe "User can search stores" do
 
       # And I fill in a search box with "80202" and click "search"
       # Then my current path should be "/search" (ignoring params)
-      fill_in "search_bar", with: 80202
+      fill_in "store_zip", with: 80202
       click_on "search"
 
       expect(current_path).to eq('/search')
