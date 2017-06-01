@@ -11,26 +11,24 @@ require 'rails_helper'
 RSpec.describe "Items API" do
   it "can show a single item" do
 
-    item = create(:item)
+    item = Item.create(name: "Book", description: "it's a good one", image_url: "this_url.com")
     # When I send a GET request to `/api/v1/items/1`
 
     get "/api/v1/items/1"
 
     expect(response).to be_success
 
-    items = JSON.parse(response.body)
-    item = item.first
+    item = JSON.parse(response.body)
 
-    expect(items.count).to eq(Item.count)
-
-    expect(items).to have_key("id")
-    expect(items).to have_key("name")
-    expect(items).to have_key("description")
-    expect(items).to have_key("image_url")
-    expect(items).to_not have_key("created_at")
-    expect(items).to_not have_key("updated_at")
 
     # I receive a 200 JSON response containing the id, name, description, and image_url but not the created_at or updated_at
+    expect(item).to have_key("id")
+    expect(item).to have_key("name")
+    expect(item).to have_key("description")
+    expect(item).to have_key("image_url")
+    expect(item).to_not have_key("created_at")
+    expect(item).to_not have_key("updated_at")
+
   end
 end
 
