@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       resources :items, only: [:show, :create, :destroy]
     end
   end
+
+  post "/search", to: "search#index"
 end

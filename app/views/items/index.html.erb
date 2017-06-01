@@ -1,3 +1,10 @@
+
+<%= form_for :store, url: "/search" do |f| %>
+  <%= f.label :search_bar %>
+  <%= f.text_field :zip %>
+  <%= f.submit "search" %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -15,4 +22,3 @@
     </div>
   <% end %>
 </div>
-
