@@ -34,17 +34,25 @@ RSpec.describe "Items API" do
 
   item_params = {name: "Book", description: "it's a good one", image_url: "this_url.com"}
 
-    post "/api/v1/items", params: {item: item_params}
-
-    expect(response).to eq(204)
+    post "/api/v1/items", {item: item_params}
 
     binding.pry
+    expect(response.status).to eq(201)
+
+
     item = JSON.parse(response.body)
+
+    expect(item).to have_key("id")
+    expect(item).to have_key("name")
+    expect(item).to have_key("description")
+    expect(item).to have_key("image_url")
+    expect(item).to_not have_key("created_at")
+    expect(item).to_not have_key("updated_at")
 
     item = Item.last
     expect(item.name).to eq("Book")
     expect(item.description).to eq("it's a good one")
-    expect(item.image_url).to eq("this_url")
+    expect(item.image_url).to eq("this_url.com")
   end
 end
 
